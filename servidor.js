@@ -1,15 +1,11 @@
-// rota = comunicação entre front e back
-// requisição 200 = cria um usuario
-// requisição 201 = responde com o usuraio que foi criado
-
-import express from 'express' // importando a biblioteca express
+import express from 'express' 
 
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const app = express() // variavel app  utilizanod o express como função
-app.use(express.json()) // garante que esta utilizando o json
+const app = express() 
+app.use(express.json()) 
 
 
 app.post('/login', async (req, res) => {
@@ -22,7 +18,7 @@ app.post('/login', async (req, res) => {
         }
     })
 
-    res.status(201).json(req.body) // responde com os usuarios - status 201 da requisição
+    res.status(201).json(req.body) 
 })
 
 app.put('/login/:id', async (req, res) => {
@@ -40,7 +36,7 @@ app.put('/login/:id', async (req, res) => {
         }
     })
 
-    res.status(201).json(req.body) // responde com os usuarios - status 201 da requisição
+    res.status(201).json(req.body) 
 })
 
 app.delete('/login/:id', async (req, res) => {
@@ -53,7 +49,7 @@ app.delete('/login/:id', async (req, res) => {
     res.status(200).json({message: 'Usuário deletado com sucesso!'})
 })
 
-app.get('/login', async (req, res) => { // criando uma rota (que devolve algo)
+app.get('/login', async (req, res) => { 
 let users = []
 
 if (req.query) {
@@ -70,7 +66,7 @@ if (req.query) {
 
     }
 
-        res.status(200).json(users) // rota de listagem de usuarios - status 200 da requisição
+        res.status(200).json(users) 
     }) 
 
-app.listen(3000) // qual a porta do computador ele ta rodando 
+app.listen(3000) 
